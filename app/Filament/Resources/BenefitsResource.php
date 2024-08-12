@@ -45,12 +45,23 @@ class BenefitsResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('name_tr'),
+                Tables\Columns\TextColumn::make('name_en'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\IconColumn::make('is_modifiable')->boolean(),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

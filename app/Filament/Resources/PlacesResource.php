@@ -17,7 +17,7 @@ class PlacesResource extends Resource
 {
     protected static ?string $model = Places::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
     protected static ?string $navigationGroup = 'Resources';
     public static function form(Form $form): Form
     {
@@ -26,19 +26,33 @@ class PlacesResource extends Resource
                 Forms\Components\TextInput::make('title'),
                 Forms\Components\TextInput::make('slug'),
                 Forms\Components\TextInput::make('zip-code'),
-                Forms\Components\TextInput::make('name_tr')
-                    ->required(),
-                Forms\Components\TextInput::make('name_en')
-                    ->required(),
-                Forms\Components\Section::make('Geo')
+                Forms\Components\KeyValue::make('name')
+                    ->schema([
+                        Forms\Components\TextInput::make('name_tr')
+                            ->required(),
+                        Forms\Components\TextInput::make('name_en')
+                            ->required(),
+                    ]),
+                // Forms\Components\TextInput::make('name_tr')
+                //     ->required(),
+                // Forms\Components\TextInput::make('name_en')
+                //     ->required(),
+                Forms\Components\KeyValue::make('geoposition')
                     ->schema([
                         Forms\Components\TextInput::make('Latitude')
                             ->required(),
                         Forms\Components\TextInput::make('Longitude')
                             ->required(),
-                    ])->columns(2),
+                    ]),
+                // Forms\Components\Section::make('Geo')
+                //     ->schema([
+                //         Forms\Components\TextInput::make('Latitude')
+                //             ->required(),
+                //         Forms\Components\TextInput::make('Longitude')
+                //             ->required(),
+                //     ])->columns(2),
                 
-                Forms\Components\MarkdownEditor::make('Description')
+                Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->columnSpan('full'),
             ]);
@@ -49,6 +63,12 @@ class PlacesResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('slug'),
+                Tables\Columns\TextColumn::make('zip-code'),
+                Tables\Columns\TextColumn::make('geoposition'),
+                Tables\Columns\TextColumn::make('description'),
+                //Tables\Columns\TextColumn::make('name'),
             ])
             ->filters([
                 //

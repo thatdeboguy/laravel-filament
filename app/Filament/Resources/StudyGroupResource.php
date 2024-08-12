@@ -17,7 +17,7 @@ class StudyGroupResource extends Resource
 {
     protected static ?string $model = StudyGroup::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
     protected static ?string $navigationGroup = 'Resources';
     public static function form(Form $form): Form
     {
@@ -43,6 +43,10 @@ class StudyGroupResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('title_tr'),
+                Tables\Columns\TextColumn::make('title_en'),
+                Tables\Columns\TextColumn::make('description_tr'),
+                Tables\Columns\TextColumn::make('description_en'),
             ])
             ->filters([
                 //

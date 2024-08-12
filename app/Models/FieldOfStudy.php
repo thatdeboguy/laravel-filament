@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FieldOfStudy extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'name_tr', 'name_en'
+    ];
 }

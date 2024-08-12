@@ -49,6 +49,11 @@ class IscoCodesResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('code'),
+                Tables\Columns\TextColumn::make('name_TR'),
+                Tables\Columns\TextColumn::make('name_EN'),
+                Tables\Columns\TextColumn::make('descriptionTR'),
+                Tables\Columns\TextColumn::make('descriptionTR'),
             ])
             ->filters([
                 //

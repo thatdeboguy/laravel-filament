@@ -53,6 +53,13 @@ class JobTitleResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('iscoCodes.code'),
+                Tables\Columns\TextColumn::make('titleTR'),
+                Tables\Columns\TextColumn::make('titleEN'),
+                Tables\Columns\TextColumn::make('keywordsTR'),
+                Tables\Columns\TextColumn::make('keywordsEN'),
+                Tables\Columns\TextColumn::make('descriptionTR'),
+                Tables\Columns\TextColumn::make('descriptionEN'),
             ])
             ->filters([
                 //

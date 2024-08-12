@@ -40,6 +40,9 @@ class SubCategoryResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Colums\TextColumn::make('name_tr'),
+                Tables\Colums\TextColumn::make('name_en'),
+                Tables\Colums\TextColumn::make('topCategory.name_tr'),
             ])
             ->filters([
                 //

@@ -36,6 +36,10 @@ class SchoolsResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Colums\TextColumn::make('name_tr'),
+                Tables\Colums\TextColumn::make('name_en'),
+                Tables\Colums\TextColumn::make('Country'),
+
             ])
             ->filters([
                 //

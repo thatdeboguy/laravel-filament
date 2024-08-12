@@ -42,6 +42,10 @@ class SectorsResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Colums\TextColumn::make('name_tr'),
+                Tables\Colums\TextColumn::make('name_en'),
+                Tables\Colums\TextColumn::make('description'),
+                Tables\Colums\IconColumn::make('is_modifiable')->boolean(),
             ])
             ->filters([
                 //

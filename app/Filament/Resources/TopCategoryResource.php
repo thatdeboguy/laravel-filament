@@ -36,6 +36,8 @@ class TopCategoryResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name_tr'),
+                Tables\Columns\TextColumn::make('name_en'),
             ])
             ->filters([
                 //
