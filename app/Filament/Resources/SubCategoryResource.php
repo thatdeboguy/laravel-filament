@@ -40,15 +40,20 @@ class SubCategoryResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Colums\TextColumn::make('name_tr'),
-                Tables\Colums\TextColumn::make('name_en'),
-                Tables\Colums\TextColumn::make('topCategory.name_tr'),
+                Tables\Columns\TextColumn::make('name_tr'),
+                Tables\Columns\TextColumn::make('name_en'),
+                Tables\Columns\TextColumn::make('topCategory.name_tr'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

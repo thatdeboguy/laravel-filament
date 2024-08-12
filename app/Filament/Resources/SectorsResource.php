@@ -19,6 +19,8 @@ class SectorsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Resources';
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -42,16 +44,22 @@ class SectorsResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Colums\TextColumn::make('name_tr'),
-                Tables\Colums\TextColumn::make('name_en'),
-                Tables\Colums\TextColumn::make('description'),
-                Tables\Colums\IconColumn::make('is_modifiable')->boolean(),
+                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('name_tr'),
+                Tables\Columns\TextColumn::make('name_en'),
+                //Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\IconColumn::make('is_modifiable')->boolean(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -19,6 +19,7 @@ class SchoolsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Resources';
+    protected static ?int $navigationSort = 4;
     public static function form(Form $form): Form
     {
         return $form
@@ -36,16 +37,21 @@ class SchoolsResource extends Resource
         return $table
             ->columns([
                 //
-                Tables\Colums\TextColumn::make('name_tr'),
-                Tables\Colums\TextColumn::make('name_en'),
-                Tables\Colums\TextColumn::make('Country'),
+                Tables\Columns\TextColumn::make('name_tr'),
+                Tables\Columns\TextColumn::make('name_en'),
+                Tables\Columns\TextColumn::make('Country'),
 
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

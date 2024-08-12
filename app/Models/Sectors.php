@@ -16,6 +16,6 @@ class Sectors extends Model
         return $this->hasMany(Industry::class);
     }
     protected $fillable = [
-        'id', 'name_tr', 'name_en'
+        'id', 'name_tr', 'name_en', 'is_modifiable '
     ];
 }

@@ -25,10 +25,10 @@ class IscoCodesResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('code')
                     ->required(),                             
-                Forms\Components\TextInput::make('name_TR')
+                Forms\Components\TextInput::make('nameTR')
                     ->label('Name Turkish')
                     ->required(),
-                Forms\Components\TextInput::make('name_EN')
+                Forms\Components\TextInput::make('nameEN')
                     ->label('Name English')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('descriptionTR')
@@ -50,8 +50,8 @@ class IscoCodesResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('code'),
-                Tables\Columns\TextColumn::make('name_TR'),
-                Tables\Columns\TextColumn::make('name_EN'),
+                Tables\Columns\TextColumn::make('nameTR'),
+                Tables\Columns\TextColumn::make('nameEN'),
                 Tables\Columns\TextColumn::make('descriptionTR'),
                 Tables\Columns\TextColumn::make('descriptionTR'),
             ])
@@ -59,7 +59,12 @@ class IscoCodesResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
